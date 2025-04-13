@@ -42,7 +42,9 @@ class ExpoAlarmModule: NSObject, UNUserNotificationCenterDelegate, AVAudioPlayer
 
     @objc(set:withResolver:withRejecter:)
     func set(alarm: NSDictionary, resolve:RCTPromiseResolveBlock, reject:RCTPromiseRejectBlock) -> Void {
-        let alarmToUse = Alarm(dictionary: alarm as! NSMutableDictionary);
+      let mutableDict = NSMutableDictionary(dictionary: alarm)
+      let alarmToUse = Alarm(dictionary: mutableDict)
+      
 
         manager.schedule(alarmToUse);    
 
